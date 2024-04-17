@@ -1,0 +1,1711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Shopify</title>
+  <meta charset="utf-8">
+  {{ 'custom.css' | asset_url | stylesheet_tag }}
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css">
+  
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+ <link rel="stylesheet" href="https://unpkg.com/cropperjs/dist/cropper.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+         @import url('https://fonts.cdnfonts.com/css/segoe-ui-4');
+        @import url('https://fonts.cdnfonts.com/css/simple-brush-script');
+        @import url('https://fonts.cdnfonts.com/css/copperplate-gothic-std');
+        @import url('https://fonts.cdnfonts.com/css/salsa');
+        @import url('https://fonts.cdnfonts.com/css/lucida-handwriting-std');
+     
+        .font-button {
+            font-size: 22px;
+            transition: font-family 0.3s ease-in-out;
+        }
+        .font-button span {
+            display: inline-block;
+        }
+    </style>
+    <style>
+
+      .bar {
+  background: silver;
+  border-radius: 30px;
+  margin: 0 0 10px;
+  width: 100%;
+  height: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress {
+  background: #568259;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  transition: 0.1s;
+}
+
+.percentage {
+  font-size: 12px;
+}
+
+.percentage:after {
+  content: "%";
+}
+         lr-btn-ui[data-id="filters"] {
+      display: none !important;
+    }
+      lr-presence-toggle lr-btn-ui[data-id="filters"] .boring{
+         display: none !important;
+      }
+    /* Styles for the progress bar */
+    #progress-bar {
+      width: 100%;
+      background-color: #f3f3f3;
+    }
+
+    #progress {
+      width: 0%;
+      height: 30px;
+      background-color: #4caf50;
+      text-align: center;
+      line-height: 30px;
+      color: white;
+    }
+
+    /* Styles for the center alignment of the uploaded image */
+    .center-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .center-image img {
+      max-width: 80%; /* Adjust the image width as needed */
+      max-height: 80vh; /* Adjust the image height as needed */
+    }
+   div#cropperModal {
+    width: 100%;
+    max-width: 700px;
+    left: 50%;
+    transform: translate(-50%, 10px);
+}
+      .BottomBtn {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+      .BottomBtn button {
+    background-color: #CFAA90;
+    color: #fff;
+    border: none;
+    display: inline-block;
+    border-radius: 5px;
+    padding: 8px 10px;
+}
+  </style>
+
+</head>
+<body>
+
+
+
+
+
+
+
+<section class="HomeSection">
+  <div class="page-width">
+    <!-- Cropper Modal -->
+  <div id="cropperModal" class="modal">
+    <div class="modal-content">
+      <div>
+        <img id="cropper-image" style="max-width: 100%;">
+      </div>
+      <div class="BottomBtn">
+      <button id="closeModal"><i class="fa fa-times" aria-hidden="true"></i></button>
+      <button id="cropImage"><i class="fa fa-check" aria-hidden="true"></i></button>
+      </div>
+      <div id="cropped-result"></div>
+    </div>
+  </div>
+    <div class="row">
+      <div class="Mobile-menu">
+       <button id="toggle">
+        <div class="one"></div>
+         <div class="two"></div>
+         <div class="three"></div>
+       </button>
+      </div>
+      <div class="content-main">
+        <!-- Left SideBar -->
+        <div class="content01 menus bg-back" id="menu">
+            <div class="Sec-browse">
+<ul class="browse-list">
+  <li id="style"  onclick="toggleActiveClass('style')">
+    <a href="#" class=" disable-data"  id="style1" onclick="add_style()"> 
+      <svg width="23" height="22" viewBox="0 0 23 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M11.5 13.5C13.0913 13.5 14.6174 12.8679 15.7426 11.7426C16.8679 10.6174 17.5 9.0913 17.5 7.5C17.5 5.9087 16.8679 4.38258 15.7426 3.25736C14.6174 2.13214 13.0913 1.5 11.5 1.5C9.9087 1.5 8.38258 2.13214 7.25736 3.25736C6.13214 4.38258 5.5 5.9087 5.5 7.5C5.5 9.0913 6.13214 10.6174 7.25736 11.7426C8.38258 12.8679 9.9087 13.5 11.5 13.5Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M15.5 20.5C16.2879 20.5 17.0681 20.3448 17.7961 20.0433C18.5241 19.7417 19.1855 19.2998 19.7426 18.7426C20.2998 18.1855 20.7417 17.5241 21.0433 16.7961C21.3448 16.0681 21.5 15.2879 21.5 14.5C21.5 13.7121 21.3448 12.9319 21.0433 12.2039C20.7417 11.4759 20.2998 10.8145 19.7426 10.2574C19.1855 9.70021 18.5241 9.25825 17.7961 8.95672C17.0681 8.65519 16.2879 8.5 15.5 8.5C13.9087 8.5 12.3826 9.13214 11.2574 10.2574C10.1321 11.3826 9.5 12.9087 9.5 14.5C9.5 16.0913 10.1321 17.6174 11.2574 18.7426C12.3826 19.8679 13.9087 20.5 15.5 20.5Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M7.5 20.5C8.28793 20.5 9.06815 20.3448 9.7961 20.0433C10.5241 19.7417 11.1855 19.2998 11.7426 18.7426C12.2998 18.1855 12.7417 17.5241 13.0433 16.7961C13.3448 16.0681 13.5 15.2879 13.5 14.5C13.5 13.7121 13.3448 12.9319 13.0433 12.2039C12.7417 11.4759 12.2998 10.8145 11.7426 10.2574C11.1855 9.70021 10.5241 9.25825 9.7961 8.95672C9.06815 8.65519 8.28793 8.5 7.5 8.5C5.9087 8.5 4.38258 9.13214 3.25736 10.2574C2.13214 11.3826 1.5 12.9087 1.5 14.5C1.5 16.0913 2.13214 17.6174 3.25736 18.7426C4.38258 19.8679 5.9087 20.5 7.5 20.5Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>        
+      <span>Style</span>
+    </a>
+  </li>
+
+  <li id="text"  onclick="toggleActiveClass('text')">
+    <a href="#" class=" disable-data"  id="text1" onclick="add_customsize()"> 
+      <svg width="24" height="20" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M16 4.42857V6.90476C16 7.15103 15.9022 7.38722 15.728 7.56136C15.5539 7.7355 15.3177 7.83333 15.0714 7.83333C14.8252 7.83333 14.589 7.7355 14.4148 7.56136C14.2407 7.38722 14.1429 7.15103 14.1429 6.90476V5.35714H10.4286V14.6429H11.9762C12.2225 14.6429 12.4586 14.7407 12.6328 14.9148C12.8069 15.089 12.9048 15.3252 12.9048 15.5714C12.9048 15.8177 12.8069 16.0539 12.6328 16.228C12.4586 16.4022 12.2225 16.5 11.9762 16.5H7.02381C6.77754 16.5 6.54135 16.4022 6.36721 16.228C6.19307 16.0539 6.09524 15.8177 6.09524 15.5714C6.09524 15.3252 6.19307 15.089 6.36721 14.9148C6.54135 14.7407 6.77754 14.6429 7.02381 14.6429H8.57143V5.35714H4.85714V6.90476C4.85714 7.15103 4.75931 7.38722 4.58517 7.56136C4.41103 7.7355 4.17484 7.83333 3.92857 7.83333C3.6823 7.83333 3.44611 7.7355 3.27197 7.56136C3.09783 7.38722 3 7.15103 3 6.90476V4.42857C3 4.1823 3.09783 3.94611 3.27197 3.77197C3.44611 3.59783 3.6823 3.5 3.92857 3.5H15.0714C15.3177 3.5 15.5539 3.59783 15.728 3.77197C15.9022 3.94611 16 4.1823 16 4.42857Z" fill="white"/>
+        <path d="M22 10V11.3333C22 11.4659 21.9473 11.5931 21.8536 11.6869C21.7598 11.7807 21.6326 11.8333 21.5 11.8333C21.3674 11.8333 21.2402 11.7807 21.1464 11.6869C21.0527 11.5931 21 11.4659 21 11.3333V10.5H19V15.5H19.8333C19.9659 15.5 20.0931 15.5527 20.1869 15.6464C20.2807 15.7402 20.3333 15.8674 20.3333 16C20.3333 16.1326 20.2807 16.2598 20.1869 16.3536C20.0931 16.4473 19.9659 16.5 19.8333 16.5H17.1667C17.0341 16.5 16.9069 16.4473 16.8131 16.3536C16.7193 16.2598 16.6667 16.1326 16.6667 16C16.6667 15.8674 16.7193 15.7402 16.8131 15.6464C16.9069 15.5527 17.0341 15.5 17.1667 15.5H18V10.5H16V11.3333C16 11.4659 15.9473 11.5931 15.8536 11.6869C15.7598 11.7807 15.6326 11.8333 15.5 11.8333C15.3674 11.8333 15.2402 11.7807 15.1464 11.6869C15.0527 11.5931 15 11.4659 15 11.3333V10C15 9.86739 15.0527 9.74021 15.1464 9.64645C15.2402 9.55268 15.3674 9.5 15.5 9.5H21.5C21.6326 9.5 21.7598 9.55268 21.8536 9.64645C21.9473 9.74021 22 9.86739 22 10Z" fill="white"/>
+        </svg>        
+       <span>Text</span>
+      </a>
+    </li>
+
+  <li id="size"  onclick="toggleActiveClass('size')">
+    <a href="#" class=" disable-data"  id="size1" onclick="add_Size()"> 
+      <svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M1.09119 12.3675C1.04684 12.4117 1.01166 12.4642 0.987651 12.5221C0.963643 12.58 0.951286 12.642 0.951286 12.7046C0.951286 12.7673 0.963643 12.8293 0.987651 12.8872C1.01166 12.945 1.04684 12.9976 1.09119 13.0418L4.45903 16.4088C4.54833 16.4981 4.66944 16.5482 4.79572 16.5482C4.92199 16.5482 5.0431 16.4981 5.1324 16.4088L15.9083 5.63255C15.9976 5.54324 16.0478 5.42213 16.0478 5.29585C16.0478 5.16957 15.9976 5.04846 15.9083 4.95915L12.5405 1.59218C12.4512 1.5029 12.3301 1.45274 12.2038 1.45274C12.0775 1.45274 11.9564 1.5029 11.8671 1.59218L10.8575 2.60179L12.4853 4.23051C12.5307 4.27451 12.5669 4.32711 12.5917 4.38525C12.6166 4.44338 12.6297 4.50589 12.6301 4.56913C12.6306 4.63236 12.6184 4.69505 12.5944 4.75354C12.5704 4.81203 12.535 4.86515 12.4902 4.9098C12.4454 4.95445 12.3922 4.98974 12.3336 5.0136C12.2751 5.03746 12.2123 5.04942 12.1491 5.04879C12.0859 5.04815 12.0234 5.03493 11.9654 5.00989C11.9073 4.98485 11.8548 4.9485 11.8109 4.90296L10.1842 3.27519L8.83645 4.62293L9.67841 5.46491C9.76516 5.55473 9.81316 5.67503 9.81207 5.7999C9.81099 5.92476 9.7609 6.04421 9.67261 6.13251C9.58431 6.2208 9.46487 6.27089 9.34001 6.27197C9.21514 6.27306 9.09485 6.22506 9.00503 6.13831L8.16307 5.29633L6.81632 6.64312L8.44404 8.27089C8.48953 8.31482 8.52581 8.36737 8.55077 8.42547C8.57572 8.48357 8.58886 8.54606 8.58941 8.6093C8.58996 8.67253 8.57791 8.73524 8.55397 8.79377C8.53002 8.8523 8.49466 8.90547 8.44995 8.95018C8.40523 8.9949 8.35206 9.03026 8.29354 9.05421C8.23501 9.07815 8.1723 9.0902 8.10907 9.08965C8.04584 9.0891 7.98335 9.07596 7.92525 9.05101C7.86715 9.02605 7.8146 8.98977 7.77067 8.94428L6.14294 7.31651L4.79619 8.6633L5.63815 9.50529C5.68363 9.54922 5.71991 9.60177 5.74487 9.65987C5.76983 9.71797 5.78297 9.78046 5.78352 9.8437C5.78407 9.90693 5.77202 9.96964 5.74807 10.0282C5.72413 10.0867 5.68877 10.1399 5.64405 10.1846C5.59934 10.2293 5.54617 10.2647 5.48764 10.2886C5.42912 10.3126 5.36641 10.3246 5.30318 10.3241C5.23994 10.3235 5.17745 10.3104 5.11935 10.2854C5.06125 10.2604 5.0087 10.2242 4.96477 10.1787L4.12282 9.3367L2.77511 10.6844L4.40379 12.3122C4.448 12.3565 4.48306 12.409 4.50697 12.4669C4.53087 12.5247 4.54315 12.5867 4.54311 12.6492C4.54306 12.7118 4.53069 12.7738 4.50671 12.8316C4.48272 12.8894 4.44759 12.9419 4.40331 12.9861C4.35903 13.0303 4.30648 13.0654 4.24865 13.0893C4.19083 13.1132 4.12886 13.1255 4.06628 13.1254C4.00371 13.1254 3.94176 13.113 3.88397 13.089C3.82617 13.065 3.77367 13.0299 3.72946 12.9856L2.10173 11.3569L1.09215 12.3675H1.09119ZM0.418769 13.7152C0.286009 13.5825 0.180692 13.425 0.108838 13.2516C0.0369838 13.0782 0 12.8923 0 12.7046C0 12.5169 0.0369838 12.3311 0.108838 12.1577C0.180692 11.9843 0.286009 11.8267 0.418769 11.6941L11.1937 0.918781C11.3264 0.786017 11.484 0.680697 11.6573 0.608841C11.8307 0.536985 12.0166 0.5 12.2043 0.5C12.392 0.5 12.5778 0.536985 12.7512 0.608841C12.9246 0.680697 13.0821 0.786017 13.2148 0.918781L16.5817 4.28576C16.8495 4.55368 17 4.91701 17 5.29585C17 5.67469 16.8495 6.03802 16.5817 6.30594L5.80578 17.0822C5.53791 17.3497 5.17479 17.5 4.79619 17.5C4.41759 17.5 4.05448 17.3497 3.7866 17.0822L0.418769 13.7152Z" fill="white"/>
+        </svg>        
+      <span>Size and Frame</span>
+    </a>
+  </li>
+
+  <li id="gallery" onclick="toggleActiveClass('gallery')">
+    <a href="#!" onclick="mygallery()"> 
+      <svg width="16" height="13" viewBox="0 0 16 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 9.25L4.7039 5.46673C4.8539 5.31351 5.03198 5.19197 5.22797 5.10905C5.42396 5.02613 5.63402 4.98345 5.84615 4.98345C6.05829 4.98345 6.26835 5.02613 6.46434 5.10905C6.66033 5.19197 6.83841 5.31351 6.98841 5.46673L10.6923 9.25M9.61539 8.15L10.627 7.11673C10.777 6.96351 10.9551 6.84197 11.151 6.75905C11.347 6.67613 11.5571 6.63345 11.7692 6.63345C11.9814 6.63345 12.1914 6.67613 12.3874 6.75905C12.5834 6.84197 12.7615 6.96351 12.9115 7.11673L15 9.25M2.07692 12H13.9231C14.2087 12 14.4826 11.8841 14.6846 11.6778C14.8865 11.4715 15 11.1917 15 10.9V2.1C15 1.80826 14.8865 1.52847 14.6846 1.32218C14.4826 1.11589 14.2087 1 13.9231 1H2.07692C1.79131 1 1.51739 1.11589 1.31542 1.32218C1.11346 1.52847 1 1.80826 1 2.1V10.9C1 11.1917 1.11346 11.4715 1.31542 11.6778C1.51739 11.8841 1.79131 12 2.07692 12ZM9.61539 3.75H9.62113V3.75587H9.61539V3.75ZM9.88462 3.75C9.88462 3.82293 9.85625 3.89288 9.80576 3.94445C9.75527 3.99603 9.68679 4.025 9.61539 4.025C9.54398 4.025 9.4755 3.99603 9.42501 3.94445C9.37452 3.89288 9.34615 3.82293 9.34615 3.75C9.34615 3.67707 9.37452 3.60712 9.42501 3.55555C9.4755 3.50397 9.54398 3.475 9.61539 3.475C9.68679 3.475 9.75527 3.50397 9.80576 3.55555C9.85625 3.60712 9.88462 3.67707 9.88462 3.75Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>        
+      <span>My Gallery</span>
+    </a>
+  </li>
+</ul>
+              </div>
+              <div class="Upload-New">
+              <a href="https://thepetpaintery.com/products/test"> <svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M6.5 12.3333L9.83333 9M9.83333 9L13.1667 12.3333M9.83333 9V16.5M16.5 12.9524C17.5179 12.1117 18.1667 10.8399 18.1667 9.41667C18.1667 6.88536 16.1146 4.83333 13.5833 4.83333C13.4012 4.83333 13.2309 4.73833 13.1384 4.58145C12.0517 2.73736 10.0454 1.5 7.75 1.5C4.29822 1.5 1.5 4.29822 1.5 7.75C1.5 9.47175 2.19621 11.0309 3.32246 12.1613" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+<span>Upload New </span></a>
+            </div>
+        </div>
+
+        <!-- Left SideBar ////////// -->
+
+        <!-- Right SideBar -->
+        <div class="content02"  id="content02"  style="display: block;">
+          
+   <script type="module">
+
+
+        import * as LR from "{{ 'file.js' | asset_url }}";
+             import { uploadFile } from "https://cdn.jsdelivr.net/npm/@uploadcare/upload-client@6.6.1/+esm";
+        LR.registerBlocks(LR);
+
+        const uploaderCtx = document.querySelector("lr-upload-ctx-provider");
+        LR.FileUploaderRegular.shadowStyles = /* CSS */ `
+      :host lr-simple-btn button {
+        width: 200px;
+        border: 2px solid var(--colorBorder);
+      }
+    `;
+        window.addEventListener("LR_UPLOAD_FINISH", () => {
+          if (uploaderCtx.uploadCollection.size !== 1) {
+            return;
+          }
+          const entryId = uploaderCtx.uploadCollection.items()[0];
+          const entry = uploaderCtx.uploadCollection.read(entryId);
+          uploaderCtx.$["*focusedEntry"] = entry;
+          uploaderCtx.$["*currentActivity"] =
+            LR.ActivityBlock.activities.CLOUD_IMG_EDIT;
+        });
+
+      window.addEventListener("apply", async (e) => {
+
+        console.log(e.detail);
+          const cdnUrl = e.detail.originalUrl+e.detail.cdnUrlModifiers;
+         const uploadedData = e.detail;
+    
+          try {
+         
+            fetch(cdnUrl)
+            .then(response => response.blob())
+            .then(blob => {
+              const reader = new FileReader();
+              reader.onload = () => {
+                const base64String = reader.result.split(',')[1]; // Extracting only the Base64 string
+                saveFilevalue(base64String)
+                 // Display the Base64 string in the console
+                // You can use the 'base64String' variable as needed (e.g., sending it to a server or using it in your application)
+              };
+              reader.readAsDataURL(blob);
+                  // uploaderCtx.uploadCollection.clearAll();
+            })
+            .catch(error => {
+              console.error('Error fetching data:', error);
+              // Handle error if any
+            });
+            // const upload = await uploadFile(cdnUrl + "-/format/png/", {
+            //   publicKey: "1141d04a9e85f40c1276"
+            // });
+            // console.log(`Edited version: ${upload.cdnUrl}`);
+            // const croppedImageUrl = upload.cdnUrl;
+            // const uuid = upload.uuid;
+            // addImageToHistory(uuid, croppedImageUrl);
+            // updateImagePreviews();
+             uploaderCtx.doneFlow();
+             uploaderCtx.uploadCollection.clearAll();
+
+          } catch (e) {
+            throw e;
+          }
+        });
+
+    window.uploadToUploadcare = async function(imageDataURL, publicKey, callback) {
+      try {
+        const blob = dataURLToBlob(imageDataURL);
+        console.log(blob);
+
+        const fileInfo = await uploadFile(blob, {
+          publicKey: publicKey
+        });
+
+        callback(null, fileInfo.cdnUrl);
+      } catch (error) {
+        callback(error, null);
+      }
+    }
+          function saveFilevalue(data) {
+             if (data) {
+               // document.getElementById('content02').style.display = 'none';
+               //   document.getElementById('content03').style.display = 'none';
+               //   document.getElementById('content04').style.display = 'block';
+               setTimeout(() => {
+  document.getElementById('content02').style.display = 'none';
+  document.getElementById('content03').style.display = 'none';
+  document.getElementById('content04').style.display = 'block';
+}, 1500);
+              const formData = new FormData();
+       formData.append('file', data);
+
+         const config = {
+      onUploadProgress: progressEvent => {
+        const { loaded, total } = progressEvent;
+        const percentCompleted = Math.round((loaded * 100) / total);
+        console.log(percentCompleted + '%'); // Display the percentage in the console
+
+        // Update the UI to show the upload progress
+        document.getElementById('uploadProgress').innerText = percentCompleted + '%';
+      },
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+check_percentage();
+               localStorage.setItem("currentiamge", JSON.stringify("data:image/jpeg;base64,"+data));
+       axios.post('https://68db-61-246-33-55.ngrok-free.app/upload', formData, config)
+         .then(response => {
+           fileData="data:image/jpeg;base64,"+data;
+           document.getElementById("style1").classList.remove("disable-data");
+           document.getElementById("text1").classList.remove("disable-data");
+           document.getElementById("size1").classList.remove("disable-data");
+           let valuelocal = JSON.parse(localStorage.getItem("upload_images"))||[];
+         document.getElementById('content02').style.display = 'none';
+                 document.getElementById('content03').style.display = 'none';
+                 document.getElementById('content04').style.display = 'none';
+           const previewImage = document.getElementById('previewImage');
+             previewImage.src = "data:image/jpeg;base64,"+data;
+             previewImage.style.width = '100%'; // Ensure the width adjusts according to the height
+             previewImage.style.display = 'block';
+                // document.getElementById('dataShow').innerText = response.data?.processed_images_urls || '';
+       // console.log(fileData,response.data?.processed_images_urls)
+             valuelocal.push("data:image/jpeg;base64,"+data,response.data)
+
+       localStorage.setItem("upload_images", JSON.stringify(valuelocal));
+           mygalleryshow_data()
+         })
+         .catch(error => {
+           console.error('Error:', error);
+         });
+             } else {
+               console.error('No file selected.');
+             }
+           }
+
+
+    </script>
+
+
+    <!-- Additional custom HTML -->
+
+    <legend class="form__label"><!-- Tidigare uppladdade bilder --></legend>
+    <div id="previous-uploaded-images">
+      <div id="button-grid" class="preview-button-grid">
+        <!-- The image-upload elements are generated dynamically using JavaScript -->
+      </div>
+    </div>
+
+          <div class="Upload-sec upload-img"  >
+            <img src="https://cdn.shopify.com/s/files/1/0693/6612/0713/t/2/assets/Featured%20icon.png?v=1702626464">
+            <h1><span>Upload an image to get started </span> <br>Your masterpiece will be ready in just a few minutes! </h1>
+             <div id="uploadButton">
+    <lr-config
+      ctx-name="my-uploader"
+      pubkey="e02d94f9cfd4081e7b4f"
+      max-local-file-size-bytes="1000000000"
+      multiple="false"
+      img-only="true"
+      source-list="local, camera, facebook, instagram"
+    crop="2:3"
+    ></lr-config>
+
+    <lr-file-uploader-regular
+      ctx-name="my-uploader"
+      css-src="https://cdn.jsdelivr.net/npm/@uploadcare/blocks@0.25.6/web/lr-file-uploader-regular.min.css"
+      class="my-config custom-translation"
+    ></lr-file-uploader-regular>
+
+    <lr-upload-ctx-provider ctx-name="my-uploader"></lr-upload-ctx-provider>
+
+    <!-- Second Uploader Setup -->
+    <lr-config
+      ctx-name="my-second-uploader"
+      pubkey="e02d94f9cfd4081e7b4f"
+      crop="2:3"
+    ></lr-config>
+
+    <lr-upload-ctx-provider id="uploaderctx" ctx-name="my-second-uploader"></lr-upload-ctx-provider>
+    </div>
+          </div>
+           <!-- <div id="progress-bar">
+    <div id="progress">0%</div>
+  </div>
+ -->
+  
+      
+        </div>
+        <div class="content02" id="content03" style="display: none;">
+           <div class="SuccessBtn" id="savelocal" style="display: none;">
+      <button type="button"> <i class="fa fa-check-circle-o" aria-hidden="true"></i> Saved Successfully</button>
+    </div>
+  <div class="Upload-sec Screen3">
+    <div class="Dog-img">
+     <img id="previewImage" style="display: none;">
+    </div>
+  </div>
+  <div class="Button-sec">
+    <div class="Bcak-btn">
+      <img src="https://cdn.shopify.com/s/files/1/0693/6612/0713/t/2/assets/return.png?v=1702299214" />
+      <button type="button"> Back</button>
+    </div>
+    <div class="Buttons">
+      <button type="button" onclick="savelocal()">Save</button>
+      <button type="button" onclick="customizedata()">Customize</button>
+       
+    </div>
+  </div>
+</div>
+          <input type="file" id="fileInput" style="display: none;" accept="image/*">
+        <div class="content02"  id="content04" style="display: none;">
+          <div class="Upload-sec">
+            <div class="Img-sec PawImg">
+            <img src="https://cdn.shopify.com/s/files/1/0616/3936/0668/t/1/assets/output-onlinegiftools.gif?v=1705309976">
+          </div>
+         <h1>Exciting times! <br> Your image is uploading, and we'll start <br> creating your preview shortly. </h1>
+<div class="bar">
+  <div class="progress"></div>
+</div>
+<div class="percentage"></div>
+          </div>
+        </div>
+
+      <div class="content02"  id="content05" style="display: none;">
+        <div class="img-scroll">
+          <div class="row store-img-1"  id="dataContainer">
+            
+         
+          </div>
+         
+        <!-- <div class="row store-img-2">
+            <div class="col-md-3">
+                <div class="Custom-sec">
+                
+                <img src="https://cdn.shopify.com/s/files/1/0693/6612/0713/t/2/assets/unsplash_T-0EW-SEbsE.png" alt="" srcset="">
+                <a href="#!" class="bin-icon"><i class="fa fa-trash-o text-white" aria-hidden="true"></i></a>
+                <b class="text">Customize</b>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="Custom-sec">
+                
+                <img src="https://cdn.shopify.com/s/files/1/0693/6612/0713/t/2/assets/unsplash_T-0EW-SEbsE.png" alt="" srcset="">
+                <a href="#!" class="bin-icon"><i class="fa fa-trash-o text-white" aria-hidden="true"></i></a>
+                <b class="text">Customize</b>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="Custom-sec">
+                
+                <img src="https://cdn.shopify.com/s/files/1/0693/6612/0713/t/2/assets/unsplash_T-0EW-SEbsE.png" alt="" srcset="">
+                <a href="#!" class="bin-icon"><i class="fa fa-trash-o text-white" aria-hidden="true"></i></a>
+                <b class="text">Customize</b>
+                </div>
+            </div>
+          </div> -->
+</div>
+        </div>
+
+
+        
+    <div class="content02"  id="content06" style="display: none;">
+          <div class="Style-Sec">
+            <div class="col-md-6">
+              <div class="thepetpaintery">
+                <div class="thepetpaintery-0">
+                <div class="Style-left thepetpaintery-img">
+                  <img id="customizeImage" >
+                  <!-- <p id="myoutput2"><b>Name</b></p> -->
+                </div>
+            </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+            <div class="Right-Style">
+              <div class="Style-right">
+                <div class="wrapper">
+                <ul class="items"   id="imageContainer">
+          
+                 
+    
+        </ul>
+                  </div>
+                <div id="data_image">
+              
+              </div>
+              </div>
+              
+                      
+          </div>
+          </div>
+          </div>
+            <div class="bottom-line">
+              <div class="row">
+                <div class="col-md-6">
+                </div>
+                <div class="col-md-6">
+                  <div class="main-card-0" id="addToCartForm">
+                    <div class="card1-5">
+                      <div class="col-md-6">
+                        <div class="Add-1">
+                          <b>$34</b>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="Add-0">
+                         <input type="submit" value="Add to Cart" class="addtocartbutton" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              </div>
+          
+        </div>
+
+
+          <div class="content02" id="content07" style="display: none;">
+            <div class="row store-img-1">
+              <div class="col-md-6">
+                <div class="thepetpaintery">
+                  <div class="thepetpaintery-0">
+                      <div class="thepetpaintery-img">
+                      <img id="customizeImage3" src="https://cdn.shopify.com/s/files/1/0616/3936/0668/t/1/assets/img-00.jpg?v=1704175170" alt="" srcset="">
+                      </div>
+                      <span class="new-0"><p id="myoutput"><b >Name</b></p></span>
+                      <span class="new-0"><p id="myoutput1"></p></span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="Customize-2">
+                  <h3><b>Customize your text:</b></h3>
+                  <div class="Customize-1">
+                    <h3><b>Text</b>
+                    </h3>
+                    <input type="text" class="input-0" id="inputs" value="Name">
+                  </div>
+                  <!-- <div class="Customize-3">
+                    <h5>Divider</h5>
+                    <input type="text" class="input-0"   id="inputss">
+                  </div> -->
+                  <div class="redio-btn">
+                    <label>
+                      <input type="checkbox"  id="myCheckbox1">
+                      <span class="checkmark">Capitalize text</span>
+                    </label>
+                  </div>
+                  <hr>
+
+                  <div class="Heading">
+                    <h3><b>Font style</b></h3>
+                  </div>
+                 <div class="font-1">
+                    <div class="font-0 active" onclick="test('Segoe Print, sans-serif', this)" style="font-family: 'Segoe Print', sans-serif;">Aa</div>
+  <div class="font-0" onclick="test('Brush Script MT, cursive, sans-serif', this)" style="font-family: 'Brush Script MT', cursive, sans-serif; font-weight: 500;
+    font-size: 18px;">Aa</div>
+ 
+  <div class="font-0" onclick="test('Copperplate Gothic Std, sans-serif', this)" style="font-family: 'Copperplate Gothic Std', sans-serif;">Aa</div>
+  <div class="font-0" onclick="test('Salsa, cursive, sans-serif', this)" style="font-family:'Salsa', cursive, sans-serif;"><b>Aa</b></div>
+  <div class="font-0" onclick="test('Lucida Handwriting Std, italic, sans-serif', this)" style="font-family:'Lucida Handwriting Std', italic, sans-serif;"><i>Aa</i></div>
+</div>
+                  <div class="Heading position">
+                    <h3><b>Text Position </b></h3>
+                  </div>
+
+                  <div class="font-1">
+                    <!-- <div class="font-0" onclick="alignText('left')"><i class="fa fa-align-left" aria-hidden="true"></i></div> -->
+                    <div class="font-0 font-03 active" id="center"  onclick="alignText('center',this)" ><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 33 33" fill="none">
+  <path d="M4.125 9.62506H28.875M8.25 16.5001H24.75M13.75 23.3751H19.25" stroke="black" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/></path>
+</svg></div>
+                  
+                    
+                    <div class="font-0 font-03"  id="right" onclick="alignText('right',this)"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 30 30" fill="none">
+  <path d="M26.25 8.75006H3.75M26.25 15.0001H11.25M26.25 21.2501H21.25" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+</path>
+                    </svg>
+                    </div>
+                    </div>
+
+                  <hr>
+                  <div class="redio-btn">
+                    <label>
+                      <input type="checkbox" id="myCheckbox">
+                      <span class="checkmark">No text</span>
+                    </label>
+                  </div>
+                  </div>
+                  
+                  
+                </div>
+                
+            <div class="bottom-line">
+              <div class="row">
+                <div class="col-md-6">
+                </div>
+                <div class="col-md-6">
+                  <div class="main-card-0" id="addToCartForm">
+                    <div class="card1-5">
+                      <div class="col-md-6">
+                        <div class="Add-1">
+                          <b>$34</b>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="Add-0">
+                          <input type="submit" value="Add to Cart" class="addtocartbutton" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              </div>
+          </div>
+            </div>
+        
+          <div class="content02" id="content08" style="display: none;">
+            <div class="row store-img-1">
+              <div class="col-md-6">
+                <div class="thepetpaintery">
+                  <div class="thepetpaintery-0">
+                    <div class="main-frame">
+                      <div class="thepetpaintery-img">
+                      <img id="customizeImage4" src="https://cdn.shopify.com/s/files/1/0616/3936/0668/t/1/assets/img-00.jpg?v=1704175170" alt="" srcset="">
+                      </div>
+                      <span class="new-0"><p id="myoutput3"><b >Name</b></p></span>
+                      <!-- <span class="new-0"><p id="myoutput1"></p></span> -->
+                      <div class="Bg-frame">
+                        <img id="Bg-frame4"  src="https://cdn.shopify.com/s/files/1/0693/6612/0713/t/2/assets/210x297mm-8x12-inch_black_wood.png?v=1707730557">
+                      </div>
+                    </div>
+                      
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="Customize-2">
+                  <div class="Customize-1">
+                    <h3><b>Size</b>
+                    </h3>
+                 
+ {%- unless product.has_only_default_variant -%}
+  {%- for option in product.options_with_values -%}
+    {%- if option.name == 'Size' %}
+      <select id="ProductSelect-{{ forloop.index0 }}-Size dataproducts" data-index="option{{ forloop.index }}" onchange="updateImage(this)" class="input-0">
+        {%- for value in option.values -%}
+          <option value="{{ value | escape }}"{% if option.selected_value == value %} selected="selected"{% endif %}>
+            {{ value | escape }}
+          </option>
+        {%- endfor -%}
+      </select>
+    {%- endif %}
+  {%- endfor -%}
+{%- endunless -%}
+
+
+                    <!-- <select name="Select-size" id="Frame" class="input-0" onchange="updateImage()">
+                      <option value="5x7">13x18 cm / 5x7′′</option>
+                        <option value="8x1">21x29.7 cm (A4) / 8x12′′</option>
+                        <option value="12x16">30x40 cm / 12x16′′ </option>
+                        <option value="16x20">40x50 cm / 16x20′′</option>
+                        <option value="18x24">45x60 cm / 18x24′′</option>
+                        <option value="20x28">50x70 cm / 20x28′′</option>
+                        <option value="28x40">70x100 cm / 28x40 ′′</option>
+                      </select> -->
+                  </div>
+                  <hr>
+
+                  <div class="Customize-1 Frames">
+                    <h3><b>Frame </b></h3>
+                    </div>
+                    <div class="Select-Frames">
+                      <ul  id="frameList">
+                        <!-- <li class="change-frame">
+                          <div class="Frame-Img"  onclick="Bgframe('https://cdn.shopify.com/s/files/1/0693/6612/0713/t/2/assets/210x297mm-8x12-inch_natural-wood.png')">
+                          <img src="https://cdn.shopify.com/s/files/1/0693/6612/0713/t/2/assets/210x297mm-8x12-inch_natural-wood.png">
+                          </div>
+                        </li>
+                        <li class="change-frame">
+                          <div class="Frame-Img"  onclick="Bgframe('https://cdn.shopify.com/s/files/1/0693/6612/0713/t/2/assets/210x297mm-8x12-inch_white_wood.png')">
+                          <img src="https://cdn.shopify.com/s/files/1/0693/6612/0713/t/2/assets/210x297mm-8x12-inch_white_wood.png">
+                          </div>
+                        </li>
+                        <li class="change-frame">
+                          <div class="Frame-Img"  onclick="Bgframe('https://cdn.shopify.com/s/files/1/0693/6612/0713/t/2/assets/210x297mm-8x12-inch_dark-wood.png')">
+                          <img src="https://cdn.shopify.com/s/files/1/0693/6612/0713/t/2/assets/210x297mm-8x12-inch_dark-wood.png">
+                          </div>
+                        </li>
+                        <li class="change-frame">
+                          <div class="Frame-Img"  onclick="Bgframe('https://cdn.shopify.com/s/files/1/0693/6612/0713/t/2/assets/210x297mm-8x12-inch_black_wood.png')">
+                          <img src="https://cdn.shopify.com/s/files/1/0693/6612/0713/t/2/assets/210x297mm-8x12-inch_black_wood.png">
+                          </div>
+                        </li> -->
+                      </ul>
+                    </div>
+                  
+
+                  </div>
+                  
+                  
+                </div>
+                
+            <div class="bottom-line">
+              <div class="row">
+                <div class="col-md-6">
+                </div>
+                <div class="col-md-6">
+                  <div class="main-card-0" id="addToCartForm">
+                    <div class="card1-5">
+                      <div class="col-md-6">
+                        <div class="Add-1">
+                          <b id='Variantsprice'>$34</b>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="Add-0">
+                        {% if product %}
+  {% form 'product', product, action: '/cart/add' %}
+    <input type="hidden" name="id" id="variant_id" value="{{ product.selected_or_first_available_variant.id }}" />
+    
+    
+      {%- for option in product.options -%}
+        {%- if option.name == 'Size' %}
+          <!-- Size variant select -->
+          <select name="properties[Size]" id="ProductSelect-{{ forloop.index0 }}-Size" data-index="option{{ forloop.index }}" class="input-0">
+            {%- for value in option.values -%}
+              <option value="{{ value | escape }}" {% if product.selected_or_first_available_variant.option1 == value %} selected="selected"{% endif %}>{{ value }}</option>
+            {%- endfor -%}
+          </select>
+        {%- elsif option.name == 'Frame' %}
+          <!-- Frame variant select -->
+          <select name="properties[Frame]" id="ProductSelect-{{ forloop.index0 }}-Frame " data-index="option{{ forloop.index }}" class="input-0">
+            {%- for value in option.values -%}
+              <option value="{{ value | escape }}" {% if product.selected_or_first_available_variant.option2 == value %} selected="selected"{% endif %}>{{ value }}</option>
+            {%- endfor -%}
+          </select>
+        {%- endif %}
+      {%- endfor -%}
+
+    
+    <!-- Other form fields can be added here -->
+    
+    <input type="submit" value="Add to Cart" class="addtocartbutton" />
+  {% endform %}
+{% endif %}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              </div>
+          </div>
+            </div>
+ 
+            <!-- Right SideBar ////////// -->
+
+          </div>
+                    
+        <!-- Right SideBar ////////// -->
+
+      </div><!-- Main Content Div ////////// -->
+
+    </div><!-- Row ////////// -->
+  </div
+    </section>
+
+
+   
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript">
+  $('.responsive').slick({
+  dots: true,
+  infinite: false,
+  speed: 300,
+  slidesToShow: 4,
+  slidesToScroll: 4,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+    // You can unslick at a given breakpoint now by adding:
+    // settings: "unslick"
+    // instead of a settings object
+  ]
+});
+</script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+   <script src="https://unpkg.com/cropperjs/dist/cropper.min.js"></script>
+  <script>
+
+
+     var cropper;
+    var modal = document.getElementById('cropperModal');
+    var imageInput = document.getElementById('image-input');
+    var progressBar = document.getElementById('progress');
+    var progressValue = 0;
+
+    let fileData = null;
+
+    function handleButtonClick() {
+      document.getElementById('fileInput').click();
+    }
+
+document.getElementById('fileInput').addEventListener('change', function(event) {
+  const file = event.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+
+    reader.onloadstart = function() {
+      modal.style.display = 'none';
+      progressBar.style.width = '0%';
+      progressBar.innerHTML = '0%';
+    };
+
+    reader.onprogress = function(event) {
+      if (event.lengthComputable) {
+        progressValue = Math.round((event.loaded / event.total) * 100);
+        progressBar.style.width = progressValue + '%';
+        progressBar.innerHTML = progressValue + '%';
+      }
+    };
+
+    reader.onload = function(e) {
+      const base64data = e.target.result;
+
+      // Displaying the image with a maximum height of 500px
+      const previewImage = document.getElementById('previewImage');
+      previewImage.src = base64data;
+      previewImage.style.maxHeight = '500px';
+      previewImage.style.width = 'auto'; // Ensure the width adjusts according to the height
+      previewImage.style.display = 'block';
+
+      // Cropper initialization
+      var image = document.getElementById('cropper-image');
+      image.src = base64data;
+      modal.style.display = 'block';
+
+      cropper = new Cropper(image, {
+        aspectRatio: 1,
+        viewMode: 2,
+        autoCropArea: 0.8,
+      });
+    };
+
+    reader.onloadend = function() {
+      progressBar.style.width = '100%';
+      progressBar.innerHTML = '100%';
+    };
+
+    reader.readAsDataURL(file);
+  }
+});
+
+
+
+       document.getElementById('cropImage').addEventListener('click', function() {
+      var croppedDataUrl = cropper.getCroppedCanvas().toDataURL('image/jpeg');
+      var croppedImageElement = document.createElement('img');
+      croppedImageElement.src = croppedDataUrl;
+      document.getElementById('cropped-result').innerHTML = 'done';
+      // document.getElementById('cropped-result').appendChild(croppedImageElement);
+         modal.style.display = 'none';
+    });
+
+    document.getElementById('closeModal').addEventListener('click', function() {
+      modal.style.display = 'none';
+    });
+
+    let mygallery=()=>{
+
+        document.getElementById('content02').style.display = 'none';
+          document.getElementById('content03').style.display = 'none';
+          document.getElementById('content04').style.display = 'none';
+          document.getElementById('content06').style.display = 'none';
+          document.getElementById('content07').style.display = 'none';
+          document.getElementById('content08').style.display = 'none';
+          document.getElementById('content05').style.display = 'block';
+
+    }
+    function saveFile() {
+      if (fileData) {
+        document.getElementById('content02').style.display = 'none';
+          document.getElementById('content03').style.display = 'none';
+          document.getElementById('content04').style.display = 'block';
+       const formData = new FormData();
+formData.append('file', fileData);
+
+const config = {
+  headers: {
+    'Content-Type': 'multipart/form-data',
+  },
+};
+
+axios.post('https://b9c3-61-246-33-55.ngrok-free.app/importpricetier', formData, config)
+  .then(response => {
+    let valuelocal = JSON.parse(localStorage.getItem("upload_images"))||[];
+  document.getElementById('content02').style.display = 'none';
+          document.getElementById('content03').style.display = 'block';
+          document.getElementById('content04').style.display = 'none';
+         // document.getElementById('dataShow').innerText = response.data?.processed_images_urls || '';
+// console.log(fileData,response.data?.processed_images_urls)
+      valuelocal.push(fileData,response.data)
+localStorage.setItem("upload_images", JSON.stringify(valuelocal));
+    mygalleryshow_data()
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+      } else {
+        console.error('No file selected.');
+      }
+    }
+
+    let  mygalleryshow_data=()=>{
+      
+      const dataArray =JSON.parse(localStorage.getItem("upload_images"))||[]; // Your array of data
+
+const container = document.getElementById('dataContainer');
+container.innerHTML = '';
+
+    // Loop through the array and display alternate items with a gap
+    for (let i = 0; i < dataArray.length; i += 2) {
+   const colDiv = document.createElement('div');
+    colDiv.classList.add('col-md-3');
+
+    const customSecDiv = document.createElement('div');
+    customSecDiv.classList.add('Custom-sec');
+
+    const img = document.createElement('img');
+    img.src = dataArray[i];
+    img.alt = 'Image Alt Text';
+    // Set any additional attributes or styles for the image
+
+    const binIconLink = document.createElement('a');
+    binIconLink.href = '#!';
+    binIconLink.classList.add('bin-icon');
+
+    
+    const binIcon = document.createElement('i');
+    binIcon.classList.add('fa', 'fa-trash-o','Icon_color');
+    binIcon.setAttribute('aria-hidden', 'true');
+       binIcon.setAttribute('onclick', `deleteimages('${dataArray[i]}')`);
+    // Set any additional attributes or styles for the bin icon
+
+    const text = document.createElement('b');
+    text.classList.add('text');
+    text.textContent = 'Customize';
+    text.setAttribute('onclick', `customize('${dataArray[i]}')`); 
+    // Append elements to create the desired structure
+    binIconLink.appendChild(binIcon);
+    customSecDiv.appendChild(img);
+    customSecDiv.appendChild(binIconLink);
+    customSecDiv.appendChild(text);
+    colDiv.appendChild(customSecDiv);
+    container.appendChild(colDiv);
+    }
+    }
+mygalleryshow_data()
+
+
+let savelocal=()=>{
+    document.getElementById('savelocal').style.display = 'block';
+setTimeout(() => {
+   document.getElementById('savelocal').style.display = 'none';
+}, "5000");
+}
+
+let deleteimages=(data)=>{
+   const dataArray =JSON.parse(localStorage.getItem("upload_images"))||[]; // Your array of data
+
+const index = dataArray.indexOf(data);
+  const datav = dataArray.filter((item, i) => i !== index && i !== index + 1);
+  localStorage.setItem("upload_images", JSON.stringify(datav));
+ mygalleryshow_data()
+}
+    
+function dropHandler(ev) {
+  ev.preventDefault();
+  if (ev.dataTransfer.items) {
+    const file = ev.dataTransfer.files[0];
+    const reader = new FileReader();
+    reader.onload = function(event) {
+      const base64data = event.target.result;
+          document.getElementById('previewImage').src = base64data;
+          document.getElementById('previewImage').style.display = 'block';
+          document.getElementById('content02').style.display = 'none';
+          document.getElementById('content03').style.display = 'block';
+          fileData = base64data;
+          saveFile()
+    };
+    reader.readAsDataURL(file);
+  }
+}
+
+function dragOverHandler(ev) {
+  ev.preventDefault();
+}
+
+// let addtocart =()=>{
+//   var e = document.getElementById("dataproducts");
+// var value = e.value;
+// var text = e.options[e.selectedIndex].text;
+// console.log(text)
+//  let imagedata = JSON.parse(localStorage.getItem("currentiamge"))||[];
+//   let checkvalue =JSON.parse(localStorage.getItem("checkout"))||[];
+//   checkvalue.push(imagedata);
+//  localStorage.setItem("checkout",JSON.stringify(checkvalue))
+
+// }
+
+
+    
+let customizedata=()=>{
+  customize(fileData);
+}
+    let customize=(data)=>{
+      localStorage.setItem("currentiamge", JSON.stringify(data));
+          document.getElementById('content02').style.display = 'none';
+          document.getElementById('content03').style.display = 'none';
+          document.getElementById('content04').style.display = 'none';
+          document.getElementById('content05').style.display = 'none';
+          document.getElementById('content08').style.display = 'none';
+          document.getElementById('content06').style.display = 'block';
+       document.getElementById('customizeImage').src = data;
+      toggleActiveClass('style')
+           document.getElementById("style1").classList.remove("disable-data");
+           document.getElementById("text1").classList.remove("disable-data");
+           document.getElementById("size1").classList.remove("disable-data");
+
+// Retrieve the array from localStorage
+let localdata = JSON.parse(localStorage.getItem("upload_images"));
+
+// Check if the localdata exists and is an array
+if (Array.isArray(localdata)) {
+  let dataToFind = data;
+  
+  // Find the index of the value in the array
+  let index = localdata.findIndex(item => item === dataToFind);
+
+  if (index !== -1 && index < localdata.length - 1) {
+    // Get the value of the next index
+    let nextValue = localdata[index + 1];
+ const imageArray =nextValue;
+
+  const imageContainer = document.getElementById("imageContainer");
+// Clear the existing content within imageContainer
+imageContainer.innerHTML = `
+  <li  id="testopen" class="item Active">
+    <div class="Styles">
+    <p>None</p>
+           <div class="ImgIcon">
+        <img id="customizeImage2">
+          </div>
+    </div>
+  </li>`;
+           document.getElementById('customizeImage2').src = data;
+           document.getElementById('customizeImage3').src = data;
+           document.getElementById('customizeImage4').src = data;
+document.getElementById('customizeImage2').onclick = function() {
+    showimage(data);
+    var items = document.querySelectorAll('.item');
+        items.forEach(function(item) {
+            item.classList.remove('Active');
+        });
+  var testopen = document.getElementById('testopen');
+      testopen.classList.toggle('Active');
+   
+};
+    let num = 0;
+  imageArray.forEach(imageUrl => {
+     let paintingStyles;
+    switch (imageUrl[0].split('/')[3]) {
+      case 'instance_1':
+        paintingStyles = " Vibrant Watercolor";
+        break;
+      case 'instance_2':
+        paintingStyles = " Classic Watercolor";
+        break;
+      case 'instance_3':
+        paintingStyles = "Cartoon";
+        break;
+      case 'instance_4':
+        paintingStyles = "Sketch";
+        break;
+      case 'instance_5':
+        paintingStyles = "Oil Painting";
+        break;
+      case 'instance_6':
+        paintingStyles = " Van Gogh";
+        break;
+    }
+   const filteredUrls = imageUrl.filter(url => url.endsWith("-1.jpg"));
+  
+    const img = new Image();
+    img.src = filteredUrls;
+    img.onload = function() {
+      const div = document.createElement("li");
+      div.classList.add("item");
+      if(filteredUrls[0].split('/')[3]=='instance_3'){
+      div.addEventListener("click", function() {
+        var items = document.querySelectorAll('.item');
+        items.forEach(function(item) {
+            item.classList.remove('Active');
+        });
+          var testopen = document.getElementById('testopen');
+      testopen.classList.remove('Active');
+            div.classList.toggle("Active");
+            var instance_3show = document.getElementById('instance_3show');
+ instance_3show.classList.toggle("Active");
+        });
+        }else{ div.setAttribute('onclick', `showimage('${filteredUrls}')`)
+              div.addEventListener("click", function() {
+                var items = document.querySelectorAll('.item');
+        items.forEach(function(item) {
+            item.classList.remove('Active');
+        });
+                  var testopen = document.getElementById('testopen');
+      testopen.classList.remove('Active');
+                 var instance_3show = document.getElementById('instance_3show');
+ instance_3show.classList.remove("Active");
+            div.classList.toggle("Active");
+        });
+             }
+
+ 
+      const stylesDiv = document.createElement("div");
+      stylesDiv.classList.add("Styles");
+      const imgIconDiv = document.createElement("div");
+const paragraphElement = document.createElement("p");
+paragraphElement.textContent = paintingStyles;
+stylesDiv.appendChild(paragraphElement);
+      imgIconDiv.classList.add("ImgIcon");
+      const imgElement = document.createElement("img");
+      imgElement.src = filteredUrls;
+      imgIconDiv.appendChild(imgElement);
+      stylesDiv.appendChild(imgIconDiv);
+      div.appendChild(stylesDiv);
+        if(filteredUrls[0].split('/')[3]=='instance_3'){
+           const data_image = document.getElementById("data_image");
+      const outerDiv = document.createElement("div");
+outerDiv.classList.add("Show-Imgs");
+          outerDiv.id = "instance_3show";
+
+const ul = document.createElement("ul");
+
+imageUrl.forEach(imageUrls => {
+  const li = document.createElement("li");
+
+  const img = document.createElement("img");
+  img.setAttribute('onclick', `showimage('${imageUrls}')`)
+  img.src = imageUrls;
+  img.alt = "";
+  img.srcset = "";
+li.addEventListener('click', function() {
+    const allLis = ul.querySelectorAll('li');
+    allLis.forEach(item => item.classList.remove('active'));
+    li.classList.add('active');
+});
+  li.appendChild(img);
+  ul.appendChild(li);
+  if (!ul.querySelector('li.active')) {
+    li.classList.add('active');
+}
+});
+
+outerDiv.appendChild(ul);
+data_image.appendChild(outerDiv);
+}
+      imageContainer.appendChild(div);
+         num++
+    };
+    img.onerror = function() {
+      const div = document.createElement("li");
+      div.classList.add("item");
+      const stylesDiv = document.createElement("div");
+      stylesDiv.classList.add("Styles");
+      const paragraphElement = document.createElement("p");
+paragraphElement.textContent =  paintingStyles;
+stylesDiv.appendChild(paragraphElement);
+      const imgIconDiv = document.createElement("div");
+      imgIconDiv.classList.add("ImgIcon");
+      const imgElement = document.createElement("img");
+      imgElement.src = "https://cdn.shopify.com/s/files/1/0693/6612/0713/t/2/assets/icegif-1260.gif?v=1703075229";
+      imgIconDiv.appendChild(imgElement);
+      stylesDiv.appendChild(imgIconDiv);
+      div.appendChild(stylesDiv);
+      imageContainer.appendChild(div);
+         num++
+    };
+  });
+    console.log("Next value:", nextValue);
+  } else {
+    console.log("Value not found or the value is the last element in the array.");
+  }
+} else {
+  console.log("No array found in localStorage or invalid data.");
+}
+
+
+   
+
+    }
+let showimage=(data)=>{
+  // alert(data)
+   localStorage.setItem("checkout",JSON.stringify(data))
+  document.getElementById('customizeImage').src = data;
+    document.getElementById('customizeImage3').src = data;
+  document.getElementById('customizeImage4').src = data;
+}
+    let add_style=()=>{
+       let localdata = JSON.parse(localStorage.getItem("currentiamge"));
+   document.getElementById('content02').style.display = 'none';
+          document.getElementById('content03').style.display = 'block';
+          document.getElementById('content04').style.display = 'none';
+          document.getElementById('content05').style.display = 'none';
+          document.getElementById('content08').style.display = 'none';
+          document.getElementById('content06').style.display = 'none';
+          document.getElementById('content07').style.display = 'none'; // Use console.log instead of alert for debugging
+          toggleActiveClass('style')
+          customize(localdata)
+    }
+     let add_Size=()=>{
+       let localdata = JSON.parse(localStorage.getItem("currentiamge"));
+          document.getElementById('content02').style.display = 'none';
+          document.getElementById('content03').style.display = 'none';
+          document.getElementById('content04').style.display = 'none';
+          document.getElementById('content05').style.display = 'none';
+          document.getElementById('content06').style.display = 'none';
+          document.getElementById('content07').style.display = 'none'; 
+          document.getElementById('content08').style.display = 'block';
+          // toggleActiveClass('style')
+          // customize(localdata)
+    }
+
+    function check_percentage(){
+  let percentage = document.querySelector('.percentage');
+  let percentageValue =  +percentage.textContent;
+  let title = document.querySelector('h1');
+  if (percentageValue >= 27 && percentageValue <= 29) {
+    let localdata = JSON.parse(localStorage.getItem("currentiamge"));
+   document.getElementById('content02').style.display = 'none';
+          document.getElementById('content03').style.display = 'block';
+          document.getElementById('content04').style.display = 'none';
+          document.getElementById('content05').style.display = 'none';
+          document.getElementById('content08').style.display = 'none';
+          document.getElementById('content06').style.display = 'none';
+          document.getElementById('content07').style.display = 'none'; // Use console.log instead of alert for debugging
+          toggleActiveClass('style')
+          customize(localdata)
+}
+  setTimeout(function(){
+    if (percentageValue < 100) {
+      update_percentage(); 
+    
+    } else {
+      percentage.textContent = 100;   
+      title.textContent = 'Done!'; 
+      title.style.color = '#568259';
+    }
+  }, 1000)
+}
+
+function update_percentage(){   
+  let percentage = document.querySelector('.percentage');
+  let percentageValue =  +percentage.textContent;
+  let progress = document.querySelector('.progress');
+   
+  percentage.textContent = percentageValue + Math.ceil(Math.random() * 5);
+  progress.setAttribute('style', `width:${percentageValue + Math.ceil(Math.random() * 5)}%`);
+ 
+  check_percentage();
+}
+
+ var toggleButton = document.getElementById('toggle');
+    var menu = document.getElementById('menu');
+
+    toggleButton.addEventListener('click', function() {
+      // Toggle the 'show-menu' class on the menu element
+      toggleButton.classList.toggle('on');
+      menu.classList.toggle('menus');
+    });
+
+document.addEventListener('DOMContentLoaded', function() {
+  var testopen = document.getElementById('testopen');
+
+  testopen.addEventListener('click', function() {
+    console.log("dfdfdf")
+    // Toggle the 'Active' class on the menu element
+    // testopen.classList.toggle('Active'); // Comment or remove this line
+
+    // Add the 'Active' class if it's not present, remove it if it's already there
+    testopen.classList.toggle('Active');
+
+    // If you want to explicitly add the 'Active' class, use the line below
+    // testopen.classList.add('Active');
+
+    // If you want to explicitly remove the 'Active' class, use the line below
+    // testopen.classList.remove('Active');
+  });
+});
+  
+  </script>
+   <script type="text/javascript">
+      const inputs = document.getElementById("inputs");
+      const inputss = document.getElementById("inputss");
+      const myoutput = document.getElementById("myoutput");
+      const myoutput3 = document.getElementById("myoutput3");
+      // const myoutput2 = document.getElementById("myoutput2");
+      const myoutput1 = document.getElementById("myoutput1");
+      const myCheckbox = document.getElementById("myCheckbox");
+      const myCheckbox1 = document.getElementById("myCheckbox1");
+     let value_borad = document.querySelector(".thepetpaintery-0");
+     const petImages = document.querySelectorAll('.thepetpaintery-img img');
+
+
+      myCheckbox.addEventListener("click", function() {
+           let para = document.getElementById("content07");
+            para.classList.toggle("notext")
+     if (myCheckbox.checked) {
+        inputs.value = "";
+        // inputss.value = "";
+        myoutput.textContent = "";
+        myoutput3.textContent = "";
+        myoutput1.textContent = "";
+        value_borad.style.boxShadow = "none";
+        value_borad.style.backgroundColor = "transparent";
+        petImages.forEach(img => {
+          img.style.maxWidth = '100%';
+        });
+    } else {
+        value_borad.style.boxShadow = "0 2px 3px #0000001f";
+        value_borad.style.backgroundColor = "#fff";
+        inputs.value = "Name";
+        myoutput.textContent ="Name";
+        myoutput3.textContent ="Name";
+          petImages.forEach(img => {
+        img.style.maxWidth = '86%';
+      });
+    }
+      });
+      inputs.addEventListener("input", function() {
+        if (!myCheckbox.checked) {
+          if (myCheckbox1.checked) {
+            myoutput.textContent =  inputs.value.toUpperCase();
+            myoutput3.textContent =  inputs.value.toUpperCase();
+            // myoutput2.textContent =  inputs.value.toUpperCase();
+          } else {
+            myoutput.textContent = inputs.value;
+            myoutput3.textContent = inputs.value;
+            // myoutput2.textContent = inputs.value;
+            
+          }
+        } else {
+          myoutput.textContent = "";
+          myoutput3.textContent = "";
+          // myoutput2.textContent = "";
+        }
+      });
+      // inputss.addEventListener("input", function() {
+      //   if (!myCheckbox.checked) {
+      //     if (myCheckbox1.checked) {
+      //       myoutput1.textContent = inputss.value.toUpperCase();
+      //     } else {
+      //       myoutput1.textContent =   inputss.value;
+      //     }
+      //   } else {
+      //     myoutput1.textContent = "";
+      //   }
+      // });
+      myCheckbox1.addEventListener("click", function() {
+        if (myCheckbox1.checked) {
+          myoutput.textContent = inputs.value.toUpperCase();
+          myoutput3.textContent = inputs.value.toUpperCase();
+          myoutput2.textContent = inputs.value.toUpperCase();
+          // myoutput1.textContent = + inputss.value.toUpperCase();
+        } else {
+          myoutput.textContent =  inputs.value;
+          myoutput3.textContent =  inputs.value;
+          // myoutput2.textContent =  inputs.value;
+          // myoutput1.textContent =  inputss.value;
+        }
+      });
+      function test(font,element) {
+        // Remove 'active-font' class from all font options
+    var fontOptions = document.querySelectorAll('.font-0');
+    fontOptions.forEach(function (fontOption) {
+      fontOption.classList.remove('active');
+    });
+
+    // Add 'active-font' class to the clicked font option
+    element.classList.add('active');
+        myoutput.style.fontFamily = font;
+        myoutput.style.fontWeight  = 700;
+        myoutput3.style.fontFamily = font;
+        myoutput3.style.fontWeight  = 700;
+        
+        myoutput1.style.fontFamily = font;
+        // myoutput2.style.fontFamily = font;
+        // myoutput2.style.fontWeight  = 700;
+        
+        // myoutput2.style.fontFamily = font;
+      }
+      function alignText(align,element) {
+                // Remove 'active-font' class from all font options
+    var fontOptions = document.querySelectorAll('.font-0');
+  
+
+    // Add 'active-font' class to the clicked font option
+
+         var fontOptions = document.querySelectorAll('.font-03');
+    fontOptions.forEach(function (fontOption) {
+      fontOption.classList.remove('active');
+    });
+            element.classList.add('active');
+        myoutput.style.textAlign = align;
+        myoutput3.style.textAlign = align;
+        // myoutput2.style.textAlign = align;
+        myoutput1.style.textAlign = align;
+      }
+
+     let add_customsize=()=>{
+       document.getElementById('content02').style.display = 'none';
+          document.getElementById('content03').style.display = 'none';
+          document.getElementById('content04').style.display = 'none';
+          document.getElementById('content05').style.display = 'none';
+          document.getElementById('content06').style.display = 'none';
+          document.getElementById('content08').style.display = 'none';
+          document.getElementById('content07').style.display = 'block';
+     }
+ function toggleActiveClass(id) {
+    var element = document.getElementById(id);
+
+    // Remove 'active' class from all list items
+    var listItems = document.querySelectorAll('.browse-list li');
+    listItems.forEach(function (li) {
+      li.classList.remove('active');
+    });
+
+    // Add 'active' class to the clicked list item
+    element.classList.add('active');
+  }
+
+
+     
+    </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.5.0/fabric.min.js"></script>
+<script>
+  document.getElementById('addToCartForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    // Fetch Uploadcare image URL
+    var uploadcareImage = uploadcare.Widget('[role=uploadcare-uploader]').value();
+
+    // Append the image URL to the form data (adjust the field name as needed)
+    var formData = new FormData(event.target);
+    formData.append('uploadcareImage', uploadcareImage);
+
+    // Submit the form with the updated data
+    fetch('/cart/add', {
+      method: 'POST',
+      body: formData,
+    })
+    .then(response => response.json())
+    .then(data => {
+      // Handle the response or perform any additional actions
+      console.log(data);
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+  });
+   var stream = await page.PdfStreamAsync(new PdfOptions
+               {
+                  Format = PaperFormat.A4,
+                  MarginOptions = new MarginOptions
+                  {
+                     Top = "0px",
+                     Right = "0px",
+                     Bottom = "0px",
+                     Left = "0px"
+                  },
+                  PrintBackground = true,
+               });
+</script>
+        <script>
+let isDown = false;
+let startX;
+let scrollLeft;
+let autoMoveInterval;
+const slider = document.querySelector('.items');
+
+const end = () => {
+  isDown = false;
+  slider.classList.remove('active');
+}
+
+const start = (e) => {
+  isDown = true;
+  slider.classList.add('active');
+  startX = e.pageX || e.touches[0].pageX - slider.offsetLeft;
+  scrollLeft = slider.scrollLeft;
+}
+
+const move = (e) => {
+  if (!isDown) return;
+
+  e.preventDefault();
+  const x = e.pageX || e.touches[0].pageX - slider.offsetLeft;
+  const dist = x - startX;
+  slider.scrollLeft = scrollLeft - dist;
+}
+
+// const startAutoMove = () => {
+//   autoMoveInterval = setInterval(() => {
+//     slider.scrollLeft += 2; // Adjust the auto move speed by changing the value
+//   }, 10); // Adjust the interval (in milliseconds) between each auto move
+// }
+
+const stopAutoMove = () => {
+  clearInterval(autoMoveInterval);
+}
+
+(() => {
+  slider.addEventListener('mousedown', start);
+  slider.addEventListener('touchstart', start);
+
+  slider.addEventListener('mousemove', move);
+  slider.addEventListener('touchmove', move);
+
+  slider.addEventListener('mouseleave', end);
+  slider.addEventListener('mouseup', end);
+  slider.addEventListener('touchend', end);
+
+  // // Start auto move when the mouse enters the slider
+  // slider.addEventListener('mouseenter', startAutoMove);
+
+  // // Stop auto move when the mouse leaves the slider
+  // slider.addEventListener('mouseleave', stopAutoMove);
+
+  // // Restart auto move when it completes
+  // slider.addEventListener('transitionend', startAutoMove);
+})();
+
+
+          let Bgframe=(data)=>{
+            
+            document.getElementById('Bg-frame4').src = data;
+             
+
+          }
+           function updateImage(selectElement) {
+             
+        // var selectElement = document.getElementById("ProductSelect-0");
+             localStorage.setItem("selectvalue",selectElement.value)
+        var selectedValue = selectElement.value;
+             // alert(selectedValue)
+             allframe(selectedValue);
+    
+    }
+
+  let allframe = (selectedValue) => {
+
+    let frames;
+let price;
+    if (selectedValue === "21x29.7 cm (A4) / 8x12′′") {
+      price=44.00;
+        frames = [
+            { imgSrc: 'https://cdn.shopify.com/s/files/1/0693/6612/0713/t/2/assets/210x297mm-8x12-inch_natural-wood.png',variant:'45226223632649' },
+            { imgSrc: 'https://cdn.shopify.com/s/files/1/0693/6612/0713/t/2/assets/210x297mm-8x12-inch_white_wood.png', variant:'45226223665417'},
+            { imgSrc: 'https://cdn.shopify.com/s/files/1/0693/6612/0713/t/2/assets/210x297mm-8x12-inch_dark-wood.png',variant:'45226223599881' },
+            { imgSrc: 'https://cdn.shopify.com/s/files/1/0693/6612/0713/t/2/assets/210x297mm-8x12-inch_black_wood.png', variant:'45225788997897'}
+        ];
+    } else if (selectedValue === "13x18 cm / 5x7′′") {
+       price=39.00;
+        frames = [
+            { imgSrc: 'https://cdn.shopify.com/s/files/1/0693/6612/0713/t/2/assets/130x180-mm-5x7-inch_natural-wood.png',variant:'45226223534345'  },
+            { imgSrc: 'https://cdn.shopify.com/s/files/1/0693/6612/0713/t/2/assets/130x180-mm-5x7-inch_white_wood.png' , variant:'45226223567113'},
+            { imgSrc: 'https://cdn.shopify.com/s/files/1/0693/6612/0713/t/2/assets/130x180-mm-5x7-inch_dark-wood.png',variant:'45226223501577' },
+            { imgSrc: 'https://cdn.shopify.com/s/files/1/0693/6612/0713/t/2/assets/130x180-mm-5x7-inch_black_wood.png' , variant:'45225775530249'}
+        ];
+    } else if (selectedValue === "30x40 cm / 12x16′′") {
+        price=49.00;
+        frames = [
+            { imgSrc: 'https://cdn.shopify.com/s/files/1/0693/6612/0713/t/2/assets/300x400-mm-12x16-inch_natural-wood.png' , variant:'45226223730953' },
+            { imgSrc: 'https://cdn.shopify.com/s/files/1/0693/6612/0713/t/2/assets/300x400-mm-12x16-inch_white_wood.png'  , variant:'45226223763721'},
+            { imgSrc: 'https://cdn.shopify.com/s/files/1/0693/6612/0713/t/2/assets/300x400-mm-12x16-inch_dark-wood.png' , variant:'45226223698185' },
+            { imgSrc: 'https://cdn.shopify.com/s/files/1/0693/6612/0713/t/2/assets/300x400-mm-12x16-inch_black_wood.png' , variant:'45225789030665' }
+        ];
+    }  else if (selectedValue === "40x50 cm / 16x20′′") {
+        price=54.00;
+        frames = [
+            { imgSrc: 'https://cdn.shopify.com/s/files/1/0693/6612/0713/t/2/assets/400x500-mm-16x20-inch_natural-wood.png'  , variant:'45226223829257'},
+            { imgSrc: 'https://cdn.shopify.com/s/files/1/0693/6612/0713/t/2/assets/400x500-mm-16x20-inch_white_wood.png' , variant:'45226223862025' },
+            { imgSrc: 'https://cdn.shopify.com/s/files/1/0693/6612/0713/t/2/assets/400x500-mm-16x20-inch_dark-wood.png'  , variant:'45226223796489'},
+            { imgSrc: 'https://cdn.shopify.com/s/files/1/0693/6612/0713/t/2/assets/400x500-mm-16x20-inch_black_wood.png' , variant:'45225789063433' }
+        ];
+    } else if (selectedValue === "45x60 cm / 18x24′′") {
+        price=59.00;
+        frames = [
+            { imgSrc: 'https://cdn.shopify.com/s/files/1/0693/6612/0713/t/2/assets/450x600-mm-18x24-inch_natural-wood.png' , variant:'45226223927561' },
+            { imgSrc: 'https://cdn.shopify.com/s/files/1/0693/6612/0713/t/2/assets/450x600-mm-18x24-inch_white_wood.png' , variant:'45226223960329' },
+            { imgSrc: 'https://cdn.shopify.com/s/files/1/0693/6612/0713/t/2/assets/450x600-mm-18x24-inch_dark-wood.png' , variant:'45226223894793' },
+            { imgSrc: 'https://cdn.shopify.com/s/files/1/0693/6612/0713/t/2/assets/450x600-mm-18x24-inch_black_wood.png' , variant:'45225789096201' }
+        ];
+    }else if (selectedValue === "50x70 cm / 20x28′′") {
+        price=64.00;
+        frames = [
+            { imgSrc: 'https://cdn.shopify.com/s/files/1/0693/6612/0713/t/2/assets/500x700-mm-20x28-inch_natural-wood.png' , variant:'45226224025865' },
+            { imgSrc: 'https://cdn.shopify.com/s/files/1/0693/6612/0713/t/2/assets/500x700-mm-20x28-inch_white_wood.png' , variant:'45226224058633' },
+            { imgSrc: 'https://cdn.shopify.com/s/files/1/0693/6612/0713/t/2/assets/500x700-mm-20x28-inch_dark-wood.png'  , variant:'45226223993097'},
+            { imgSrc: 'https://cdn.shopify.com/s/files/1/0693/6612/0713/t/2/assets/500x700-mm-20x28-inch_black_wood.png' , variant:'45225789128969' }
+        ];
+    }else if (selectedValue === "70x100 cm / 28x40") {
+        price=69.00;
+        frames = [
+            { imgSrc: 'https://cdn.shopify.com/s/files/1/0693/6612/0713/t/2/assets/700x1000-mm-28x40-inch_natural-wood.png' , variant:'45226224124169' },
+            { imgSrc: 'https://cdn.shopify.com/s/files/1/0693/6612/0713/t/2/assets/700x1000-mm-28x40-inch_white_wood.png' , variant:'45226224156937' },
+            { imgSrc: 'https://cdn.shopify.com/s/files/1/0693/6612/0713/t/2/assets/700x1000-mm-28x40-inch_dark-wood.png' , variant:'45226224091401' },
+            { imgSrc: 'https://cdn.shopify.com/s/files/1/0693/6612/0713/t/2/assets/700x1000-mm-28x40-inch_black_wood.png'  , variant:'45225789161737'}
+        ];
+    }
+
+    // Get the container and list elements
+const framesContainer = document.getElementById('framesContainer');
+const frameList = document.getElementById('frameList');
+frameList.innerHTML = '';
+    const Variantsprice = document.getElementById('Variantsprice');
+Variantsprice.innerHTML = '';
+
+Variantsprice.innerHTML = '$'+price+'.00';
+
+// Create frame elements dynamically
+    let framesname= ['Wood','White Wood','Dark Wood','Black Wood']
+frames.forEach((frameData, index) => {
+    const listItem = document.createElement('li');
+  const text = document.createElement('p');
+text.textContent = framesname[index];
+listItem.appendChild(text);
+  
+   const frameDivWrapper = document.createElement('div');
+frameDivWrapper.classList.add('change-frame');
+
+if (index === 2) {
+    frameDivWrapper.classList.add('active');
+}
+
+    const frameDiv = document.createElement('div');
+    frameDiv.classList.add('Frame-Img');
+    frameDiv.onclick = () => {
+        Bgframe(frameData.imgSrc);
+        toggleActiveClass(frameDivWrapper, frameData.variant);
+    };
+
+    const frameImg = document.createElement('img');
+    frameImg.src = frameData.imgSrc;
+
+ frameDiv.appendChild(frameImg);
+frameDivWrapper.appendChild(frameDiv);
+listItem.appendChild(frameDivWrapper);
+frameList.appendChild(listItem);
+});
+
+function toggleActiveClass(element,variants) {
+    const activeElement = frameList.querySelector('.active');
+  const hiddenInput = document.getElementById("variant_id");
+hiddenInput.value = variants;
+    if (activeElement !== element) {
+        activeElement.classList.remove('active');
+        element.classList.add('active');
+    }
+}
+};
+
+allframe("13x18 cm / 5x7′′");
+
+        </script>
+   
+</body>
+</html>
+

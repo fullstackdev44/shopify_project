@@ -1,0 +1,1332 @@
+
+body {
+   
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    padding: 0;
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading-family);
+    font-style: var(--font-heading-style);
+    font-weight: var(--font-heading-weight) !important;
+    color: var(--color-base) !important;
+    --font-heading-line-height: 130%;
+    line-height: var(--font-heading-line-height) !important;
+    word-break: break-word;
+}
+h4.text-columns-img__heading.mt0.mb0 {
+    font-size: calc(20px* var(--font-heading-scale));
+}
+h5.footer__heading.mt0.mb0 {
+    font-size: calc(16px* var(--font-heading-scale)) !important;
+    display: block;
+    width: 100%;
+}
+.chm-toggle__button h5 {
+    display: block;
+    width: 100%;
+}
+.chm-toggle__button h5 {
+    font-size: calc(16px* var(--font-heading-scale));
+}
+.totals h3 {
+    font-size: calc(24px* var(--font-heading-scale));
+}
+#myoutput3 {
+    font-family: 'Segoe Print', cursive;
+}
+.font-0.active  {
+    border: 2px solid #CEAA92;
+}
+.browse-list img.img02 {
+    display: none;
+    transition: 3.5s;
+    transition-duration: 3.5s;
+}
+.active a {
+    background-color: #fff;
+    color: #000 !important;
+    border-radius: 10px;
+}
+.new-0 {
+    text-align: center;
+  }
+.Show-Imgs {
+    margin-top: 0px;
+}
+.Show-Imgs ul {
+    display: grid;
+    gap: 5px;
+    grid-template-columns: repeat(8,1fr);
+    margin-top: 0px;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.Show-Imgs ul li img {
+    border-radius: 22px;
+    width: 100%;
+    height: auto;
+}
+.Show-Imgs ul li {
+    list-style-type: none;
+    padding: 2px;
+    margin-bottom: 0px;
+}
+#content08 p {
+    padding-right: 30px;
+}
+.Show-Imgs li.active {
+    border: 1px solid #874214;
+}
+  #myoutput {
+    font-family: 'Segoe Print', cursive;
+  }
+  #myoutput2 {
+    font-family: 'Segoe Print', cursive;
+  }
+.browse-list .active a img.img02{
+    display:block;
+    transition: 3.5s;
+    transition-duration: 3.5s;
+}
+.browse-list .active a img.img01{
+    display:none;
+    transition: 3.5s;
+    transition-duration: 3.5s;
+}
+.browse-list .active:hover a {
+    background-color: #fff !important;
+    color: #000!important;
+    border-radius: 10px!important;
+}
+.browse-list .active:hover a img.img02, .browse-list .active:focus a img.img02{
+    display:block;
+    transition: 3.5s;
+    transition-duration: 3.5s;
+}
+.browse-list .active:hover a img.img01, .browse-list .active:focus a img.img01{
+    display:none;
+    transition: 3.5s;
+    transition-duration: 3.5s;
+}
+.browse-list img.img02 {
+    display: none;
+    transition: 3.5s;
+    transition-duration: 3.5s;
+}
+.browse-list li:hover a {
+    background-color: #fff;
+    color: #000;
+    border-radius: 10px;
+}
+.browse-list li:hover a img.img02, .active:focus a img.img02{
+    display:block;
+    transition: 3.5s;
+    transition-duration: 3.5s;
+}
+.browse-list li:hover a img.img01, .active:focus a img.img01{
+    display:none;
+    transition: 3.5s;
+    transition-duration: 3.5s;
+}
+.Slick_Slide.Tool {width: 100%;}
+.Show-Imgs.Active {
+    display: block;
+}
+.Show-Imgs {
+    display: none;
+}
+.Tabs_Slider.OurWorksSlider {
+    display: flex;
+    /* align-items: center; */
+    gap: 10px;
+}
+.breadcrumb li {
+    font-weight: 500;
+}
+a {
+    text-decoration: none !important;
+}
+.header span.h3 {
+    color: #000;
+    font-weight: 600;
+  font-size:24px;
+}
+
+.btn-style {
+    position: relative;
+}
+li {
+    list-style-type: none;
+}
+#MainContent {
+    background-color: #fff;
+}
+.breadcrumb {
+    margin-bottom: 40px !important;
+}
+.content-main {
+    display: flex;
+}
+/* #testopen {
+    border-radius: 9px;
+    border: 2px solid #cfaa90;
+    box-sizing: border-box;
+    padding: 9px;
+} */
+/* .border-000 {
+    border-radius: 9px !important;
+    border: 2px solid #cfaa90 !important;
+    box-sizing: border-box;
+    padding: 9px !important; */
+}
+.ImgIcon {
+    width: 50px;
+    height: auto;
+}
+.border-000 p {
+    font-size: 7px;
+}
+
+.Frames {
+    width: 100%;
+}
+.Frames h3 {
+    width: 100% !important;
+}
+.Customize-1 h3 {
+    margin-bottom: 0;
+}
+#content07 .Customize-1 h3 {
+    font-size: 22px;
+}
+.Heading h3 {
+    font-size: 20px;
+}
+.content01 {
+    width: 100%;
+    max-width: 238px;
+    padding: 84px 25px 25px;
+    background-image: url(./bg-sidebar.jpg);
+    position: relative;
+    height: 100%;
+       min-height: 648px !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: right;
+}
+.Dog-img img {
+   
+    box-shadow: 0 12px 40px #0000001c;
+    width: 100%;
+    margin: 0px auto;
+    padding: 10px;
+}
+
+.content02 {
+    width: calc(100% - 238px);
+    background-color: #F6F7FA;
+    padding: 65px 45px 50px;
+    position: relative;
+}
+.img-scrol {
+    overflow-y: scroll;
+}
+.browse-list {
+    margin: 0 0px;
+    padding: 0;
+    text-align: center;
+}
+.img-scroll {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    max-height: 540px;
+}
+.browse-list li {
+    list-style-type: none;
+    margin-bottom: 34px;
+}
+
+.browse-list img {
+    width: 100%;
+    max-width: 20px;
+}
+
+.browse-list li a {
+    font-size: 18px;
+    color: #ffffff;
+    padding: 10px 20px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+}
+.browse-list li:hover a svg path, .browse-list li.active a svg path {
+    stroke: #000;
+}
+.browse-list li:nth-child(2):hover a svg path, .browse-list li.active:nth-child(2) a svg path {
+    fill: #000;
+    stroke: none;
+}
+.Upload-sec {
+    width: 100%;
+    max-width: 624px;
+    background-color: #fff;
+    margin: 0px auto;
+    padding: 135px;
+    text-align: center;
+    position: relative;
+}
+
+.Upload-sec h1 {
+    padding-top: 40px;
+    font-size: 18px;
+    color: #282828;
+    line-height: 30px;
+    font-weight: 600;
+}
+
+.Upload-sec h1 span {
+    color: #CFAA90;
+    font-weight: 700;
+}
+
+.Upload-New {
+    position: absolute;
+    bottom: 60px;
+    left: 0;
+    display: block;
+    width: 100%;
+    text-align: center;
+    border-top: 1px solid #fff;
+    padding-top: 38px;
+}
+.browse-list span {
+    font-size: 17px;
+}
+.Img-00 img {
+    margin: 5px 0px;
+}
+
+.Upload-New a {
+    color: #fff;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.Upload-New img {
+    width: 100%;
+    max-width: 20px;
+}
+
+.upload-img img {
+    width: 100%;
+    max-width: 65px;
+}
+.Active p {
+    font-size: 11px;
+}
+.change-frame.active {
+    border: 3px solid #CEAA92 !important;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+ 
+::-webkit-scrollbar-track {
+    background-color: #ebebeb;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: #6d6d6d; 
+}
+.PawImg {
+    position: absolute;
+    left: 50%;
+    top: 70px;
+    right: 0;
+    transform: translate(-50%, 0);
+}
+.PawImg img {
+    width: 100%;
+    height: auto;
+    max-width: 160px;
+}
+.Screen3 {
+    padding: 0;
+}
+
+.Dog-img img {
+    max-width: 300px;
+    box-shadow: 0 12px 40px 0 rgb(0 0 0 / 11%);
+  width: 100%;
+}
+
+.Button-sec {
+    text-align: left;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 45px;
+}
+
+.Bcak-btn {
+    width: 50%;
+}
+
+.Bcak-btn button {
+    border: none;
+    font-weight: 600;
+    background-color: #f0f8ff00;
+}
+
+.Buttons {
+    width: 50%;
+    display: flex;
+    gap: 20px;
+    justify-content: flex-end;
+}
+
+.Buttons button {
+    background-color: #CFAA90;
+    color: #fff;
+    border: none;
+    width: 100%;
+    max-width: 120px;
+    display: inline-block;
+    border-radius: 5px;
+    padding: 8px 10px;
+}
+
+.Bcak-btn img {
+    width: 100%;
+    max-width: 18px;
+}
+
+.Style-Sec {
+    margin: 0 0px 0 auto;
+    max-width: 1120px;
+    padding: 0;
+    background-color: transparent;
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+}
+
+.Style-left {
+    background: no-repeat;
+    box-shadow: none;
+}
+
+.Style-left img {
+    width: 100%;
+    max-width: 340px;
+    height: 100%;
+    object-fit: cover;
+    max-height: 380px;
+}
+.Style-left h2 {
+    font-size: 22px;
+    color: #000;
+    font-weight: 700;
+    padding-top: 15px;
+}
+.Style-Sec .thepetpaintery-0 {
+    box-shadow: none !important;
+    background-color: transparent !important;
+}
+.Right-Style {
+    height: 100%;
+  width: 100%;
+}
+.Style-right {
+    background-color: #fff;
+    box-shadow: 0 12px 40px 0 rgb(0 0 0 / 11%);
+    width: 100%;
+    padding: 35px 20px;
+    border: 1px solid #CFAA90;
+    border-radius: 20px;
+    height: 100%;
+    min-height: 370px;
+}
+
+.OurWorksSlider .slick-track {
+    display: flex;
+    gap: 20px;
+}
+
+.ImgIcon img {
+    width: 100%;
+    max-width: 100%;
+    height: 98px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.Style-right h4 {
+    font-size: 20px;
+    color: #ceaa92;
+    font-weight: 700;
+    padding-bottom: 10px;
+}
+.disable-data {
+    pointer-events: none;
+}
+.item.Active .Styles {
+    border: 2px solid #CEAA92!important;
+    border-radius: 10px!important;
+    box-sizing: border-box;
+    padding: 8px!important;
+}
+.Drop-imgs {
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    max-height: 240px;
+}
+.Drop-imgs {
+    display: none;
+}
+.Active .Drop-imgs {
+    display: block;
+  margin-top: 16px;
+}
+.Styles {
+    border: none;
+    border-radius: 10px;
+    padding: 0;
+}
+.bottom-line {
+    margin-top: 17px !important;
+}
+
+.OurWorksSlider button.slick-prev.slick-arrow,
+.OurWorksSlider button.slick-next.slick-arrow {
+    display: none !important;
+}
+
+.Style-right .Styles p {
+    font-size: 16px;
+    color: #cfaa90;
+    font-weight: 700;
+    line-height: 20px;
+    text-align: center;
+}
+
+/* .Tool {
+    min-height: 400px !important;
+} */
+
+.DropDown ul.dropdown-menu.show {
+    left: -23px !important;
+    min-width: 0px;
+}
+
+.DropDown ul.dropdown-menu img {
+    width: 100%;
+    max-width: 70px;
+    border-radius: 15px;
+}
+
+.DropDown .btn.show {
+    background-color: snow;
+    border-color: transparent;
+}
+
+.DropDown ul.dropdown-menu.show {
+    left: -23px !important;
+    min-width: 0px;
+    overflow-y: scroll;
+    height: 100vh;
+    max-height: 210px;
+    scrollbar-width: thin;
+}
+
+.DropDown ul.dropdown-menu.show::-webkit-scrollbar {
+    width: 2px;
+}
+.store-img-1 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.store-img-2 {
+    display: flex;
+    justify-content: space-around;
+    padding: 0px 20px;
+    margin-top: 25px;
+}
+
+.Mobile-menu{
+  display:none;
+}
+.store-delete {
+    width: 100%;
+    position: relative;
+    top: 43px;
+    left: 224px;
+    display: flex;
+}
+
+.store-hide {
+    display: flex;
+    position: relative;
+    left: 119px;
+    top: 122px;
+    padding: 10p;
+    width: 100%;
+    height: 31px;
+    overflow: hidden;
+    object-fit: cover;
+
+}
+
+.store-hide {
+    display: none;
+}
+
+.store-delete:hover+.store-hide {
+    display: block;
+    color: red;
+
+}
+
+
+.Custom-sec img {
+    width: 100%;
+    max-width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid #CFAA90;
+}
+
+.Custom-sec {
+    position: relative;
+    width: 100%;
+  margin-bottom: 30px;
+}
+
+b.text {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    right: 0;
+    color: #fff;
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0 auto;
+    text-align: center;
+}
+.Custom-sec a {
+    position: absolute;
+    right: 14px;
+    top: 10px;
+    transition: 0.5s;
+    color: #fff;
+}
+.text{
+    display: none;
+    transition: 0.5s;
+}
+.Custom-sec:hover .text{
+  display: block;
+  transition: 0.5s;
+}
+.bin-icon{
+    display: none;
+    transition: 0.5s;
+}
+.Custom-sec:hover .bin-icon{
+    display: block;
+    transition: 0.5s;
+  }
+.Custom-sec:hover img {
+    transition: 0.5s;
+    filter: blur(3px);
+}
+.SuccessBtn {
+    text-align: right;
+    padding: 10px 12px 20px 0;
+}
+.SuccessBtn button {
+    background-color: #fff;
+    padding: 10px 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    height: 56px;
+    width: 100%;
+    max-width: 290px;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+ .Customize-1{
+    display: flex;
+    padding: 15px 0px;
+    gap: 11px;
+    align-items: center;
+  }
+.Customize-1 h3 b {
+    font-size: 20px;
+}
+  .Customize-2 {
+    padding: 20px;
+    border: 2px solid #ceaa92;
+    border-radius: 10px;
+}
+.input-0 {
+    width: 313px;
+    height: 33px;
+    border-radius: 8px;
+    border: 1px solid #ceaa92;
+    width: 100%;
+    max-width: 370px;
+    padding: 5px 10px;
+}
+.Customize-3 {
+    display: flex;
+    padding: 0px 0px;
+    gap: 20px;
+}
+h5 {
+    width: 20%;
+}
+
+.redio-btn {
+    padding: 13px 0px 0px 0px;
+}
+
+.font-1 {
+    padding: 9px 0px;
+    display: flex;
+      flex-wrap: wrap;
+    gap: 10px;
+}
+
+
+
+.font-0 {
+     font-weight: 600 !important;
+    font-size: 17px;
+    border: 1px solid #CEAA92;
+    padding: 6px 4px;
+    border-radius: 4px;
+    width: 100%;
+    max-width: 40px;
+    text-align: center;
+}
+.card1-5 {
+    display: flex;
+    align-items: center;
+}
+.new-0 p#myoutput {
+    padding: 7px 20px;
+    text-align: center;
+}
+.font-0{
+        transition-duration: .35s;
+}
+.font-1 .active {
+       border: 1px solid #874214;
+}
+
+.row.card1-5 {
+    margin-top: 17px;
+    padding: 10p;
+    background-color: #ceaa92;
+}
+.card1-5 {
+    display: flex;
+}
+
+.main-card-0 {
+    background-color: #CEAA92;
+    border-radius: 10px;
+    padding: 10px 5px;
+}
+
+
+.Add-1 {
+    color: white;
+    margin-top: 10px;
+}
+
+.thepetpaintery-img img {
+    width: 100%;
+    max-width: 82% !important;
+    margin-top: 17px;
+    height: 100%;
+    object-fit: cover;
+    max-height: 380px;
+}
+.thepetpaintery-img {
+    justify-content: center;
+    display: flex;
+}
+.thepetpaintery-0 {
+    background-color: white;
+    width: 250px;
+    height: 304px;
+}
+.thepetpaintery {
+    display: flex;
+    justify-content: center;
+}
+.notext img#customizeImage3 {
+    margin-top: 0;
+    max-width: 82% !important;
+}
+.notext .thepetpaintery-0 {
+    background: transparent;
+    box-shadow: none;
+}
+.notext .thepetpaintery-0 {
+    margin-top: 17px;
+}
+.position h3 {
+    padding-top: 10px;
+}
+
+
+
+
+
+div.mm-dropdown {
+  border: 1px solid #ddd;
+  width: 100%;
+  border-radius: 3px;
+}
+
+div.mm-dropdown ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+div.mm-dropdown ul li,
+div.mm-dropdown div.textfirst {
+  padding: 0;
+  color: #333;
+  border-bottom: 1px solid #ddd;
+  padding: 5px 15px;
+}
+
+div.mm-dropdown div.textfirst img.down {
+  float: right;
+  margin-top: 5px
+}
+
+div.mm-dropdown ul li:last-child {
+  border-bottom: 0;
+}
+
+div.mm-dropdown ul li {
+  display: none;
+  padding-left: 25px;
+}
+
+div.mm-dropdown ul li.main {
+  display: block;
+}
+
+div.mm-dropdown ul li img {
+  width: 20px;
+  height: 20px;
+}
+
+.Select-Frames ul {
+    padding-left: 0;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(4,1fr);
+    width: 100%;
+    justify-content: space-between;
+}
+.Select-Frames {
+    margin-top: 30px;
+}
+.main-frame {
+    position: relative;
+}
+.Bg-frame {
+    position: absolute;
+    top: -10px;
+    bottom: -40px;
+    left: 0;
+    right: 0;
+}
+.main-frame .thepetpaintery-img img {
+    width: 100%;
+    max-width: 82% !important;
+    margin-top: 17px;
+}
+.Bg-frame img {
+    box-shadow: 0 11px 11px 0 rgb(0 0 0 / 39%);
+    width: 100%;
+    height: 100%;
+    /* min-height: 430px; */
+}
+ul#frameList li p {
+    padding: 0;
+    margin: 0 0 10px;
+    font-size: 14px;
+    font-weight: 500;
+}
+.change-frame {
+    position: relative;
+    border: 1px solid #CEAA92;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #f9f9f9;
+    min-height: 94px;
+    cursor: pointer;
+}
+.Frame-Img {
+    position: absolute;
+    top: 29px;
+    left: 26px;
+    right: -12px;
+}
+.Frame-Img img {
+    width: 100%;
+    height: auto;
+}
+.main-card-0 .Add-0 p {
+    margin: 0;
+}
+
+span.new-0 {
+    text-align: center;
+}
+.h5, h5 {
+    font-weight: bold;
+    font-size: 15px;
+}
+.redio-btn span.checkmark {
+    font-size: 15px;
+    font-weight: 600;
+}
+.font-0.bright {
+    border: 1px solid #874214;
+}
+.font-0 {
+    font-size: 17px;
+    border: 1px solid #CEAA92;
+    padding: 6px;
+    border-radius: 4px;
+}
+.btn_zoom>* {
+    z-index: 1;
+    position: relative;
+}
+.Add-1 {
+    color: #fff;
+    margin-top: 2px;
+    font-size: 19px;
+    text-align: left;
+}
+.Add-0 {
+    margin-top: 2px;
+    font-weight: 600;
+    font-size: 20px;
+    text-align: end;
+    align-self: center;
+    color: #fff;
+    align-items: center;
+    margin-top: 0;
+}
+.thepetpaintery-0 {
+    box-shadow: 0 2px 3px 0 rgb(0 0 0 / 12%);
+}
+.Customize-2 {
+    box-shadow: 0 2px 3px 0 rgb(0 0 0 / 31%);
+    background-color: white;
+    height: 100%;
+}
+.thepetpaintery-0 {
+     width: 351px;
+    height: auto;
+}
+
+span.new-0 {
+    font-size: 16px;
+    text-align: center;
+}
+
+
+.wrapper {
+	position: relative;
+	
+	// Gradient side fade
+
+	&:before,
+	&:after {
+		position: absolute;
+		top: 0;
+		z-index: 1;
+
+		content: "";
+		display: block;
+		width: $margin;
+		height: 100%;
+	}
+	
+	&:before {
+		left: 0;
+		background: linear-gradient(90deg, $bg-color, transparent);
+	}
+	
+	&:after {
+		right: 0;
+		background: linear-gradient(-90deg, $bg-color, transparent);
+	}
+}
+
+.items {
+   position: relative;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 0;
+    cursor: pointer;
+    padding-left: 0;
+
+	
+	&.active {
+		cursor: grab;
+	}
+}
+
+.item {
+  display: inline-flex;
+    user-select: none;
+    width: 50%;
+    height: 100%;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: normal;
+    margin: 0 10px;
+	
+	&:last-child {
+		margin-right: $margin;
+	}
+}
+
+@media only screen and (min-width: 1025px) and (max-width: 1180px)  {
+    .Customize-1 h3 {
+    width: 22%;
+}
+}
+ @media only screen and (min-width: 1181px) and (max-width: 1378px)  {
+    .Customize-1 h3 {
+    width: 14%;
+}
+    }
+@media screen and (min-width: 800px) {
+
+	.item {
+		width: 25%;	
+	}
+}
+
+@media screen and (min-width: 1200px) {
+	
+	.wrapper {
+		margin-left: -$margin;
+	}
+
+	.item {
+		width: 25%;	
+	}
+}
+ @media only screen and (min-width: 768px) and (max-width: 1024px)  {
+    .Customize-1 h3 {
+    width: 12%;
+}
+    }
+@media only screen and (min-width: 100px) and (max-width: 1024px)  {
+.browse-list li a svg path {
+    stroke: #CFAA90 !important;
+}
+.browse-list li:nth-child(2) a svg path {
+    fill: #CFAA90 !important;
+    stroke: none !important;
+}
+  .Upload-New a svg path {
+    stroke: #CFAA90;
+}
+  .Customize-1 h3 {
+    min-width: 40px;
+}
+.Upload-sec {
+    padding: 25px;
+    border: 1px solid #CFAA90;
+    border-radius: 12px;
+}
+  .Mobile-menu{
+  display:block;
+}
+.content-main {
+    flex-direction: column;
+}
+  .Customize-1 h3 b {
+    font-size: 15px;
+}
+#content02 {
+    width: 100%;
+}
+.content01 {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    padding: 60px 0 30px;
+    background: transparent;
+    min-height: auto !important;
+}
+.browse-list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 10px;
+}
+  .browse-list li {
+    margin-bottom: 0;
+}
+.browse-list li a {
+    flex-direction: column;
+    padding: 15px 6px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    min-width: 60px;
+    color: #000;
+}
+  .browse-list li a svg {
+    height: 22px;
+}
+  .browse-list img {
+    display: none;
+}
+  .browse-list img.img02 {
+    display: block;
+}
+  .Upload-New {
+    bottom: inherit;
+    padding-top: 10px;
+    top: 0px;
+}
+  .Upload-New a {
+    color: #000;
+    justify-content: end;
+    font-size: 15px;
+}
+  .Upload-New a span {
+    font-weight: 400;
+}
+  .browse-list li.active a {
+    border: 1px solid #CFAA90;
+}
+  .browse-list li.active a span {
+    color: #CFAA90;
+    font-weight: 700;
+}
+  .browse-list span {
+    font-size: 13px;
+}
+  .Mobile-menu {
+    display: none;
+}
+ /* .menus {
+    display: none;
+} */
+  #toggle {
+  width: 36px;
+  height: 30px;
+  margin: 10px auto;
+  background-color: transparent;
+}
+#toggle div {
+  width: 100%;
+  height: 5px;
+  background: #cfaa90;
+  margin: 4px auto;
+  transition: all 0.3s;
+  backface-visibility: hidden;
+}
+#toggle.on .one {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+#toggle.on .two {
+  opacity: 0;
+}
+#toggle.on .three {
+  transform: rotate(-45deg) translate(7px, -8px);
+}
+  .content02 {
+    width: 100%;
+}
+}
+
+@media screen and (max-width: 767px){
+.Custom-sec img {
+    max-width: 400px;
+    height: auto;
+    max-height: 340px;
+}
+  .Custom-sec {
+    text-align: center;
+}
+.thepetpaintery-0 {
+    box-shadow: inherit;
+    border: 1px solid #CFAA90;
+    border-radius: 15px;
+    overflow: hidden;
+}
+  .main-frame .thepetpaintery-img img {
+    margin-top: 0;
+}
+  .Bg-frame {
+    top: 0;
+    bottom: -17px;
+}
+  .Bg-frame img {
+    box-shadow: inherit;
+}
+  .content02 {
+    background-color: transparent;
+}
+.thepetpaintery-img img {
+    max-width: 100% !important;
+    margin-top: 0;
+    max-height: 350px;
+    height: auto;
+}
+.thepetpaintery-img {
+    border-radius: 15px 15px 0px 0px;
+    overflow: hidden;
+}
+  .Custom-sec {
+    max-width: 400px;
+    margin: 0 auto;
+}
+.Style-Sec .col-md-6 {
+    max-width: 100%;
+    padding: 0;
+}
+.Style-Sec {
+    flex-direction: column;
+}
+.thepetpaintery {
+    margin: 20px 0 0;
+}
+.thepetpaintery-0 {
+    width: 100%;
+    max-width: 400px;
+}
+.Customize-2 {
+    margin-top: 30px;
+    box-shadow: none;
+    border: none;
+    padding: 0;
+}
+ #content06 .main-card-0 {
+    margin-top: 0px !important;
+}
+ .Right-Style {
+    margin-top: 30px;
+}
+.Style-Sec {
+    margin-bottom: 0px;
+}
+  .Select-Frames {
+    margin-top: 10px;
+}
+
+}
+@media screen and (max-width: 720px) {
+
+.PawImg {
+    top: 30px;
+    position: static;
+    transform: none;
+}
+  .PawImg img {
+    max-width: 130px;
+}
+}
+@media screen and (max-width: 576px){
+.grid [class*=col-] {
+    position: relative;
+    flex: 0 0 auto;
+    width: 100% !important;
+    padding-right: calc(var(--page-padding) / 2);
+    padding-left: calc(var(--page-padding) / 2);
+}
+}
+
+@media screen and (min-width: 500px) {
+
+	.item {
+		width: 33%;	
+	}
+}
+@media screen and (max-width: 544px){
+  .content02 {
+    padding: 0;
+}
+.Select-Frames ul {
+    grid-template-columns: repeat(3,1fr);
+}
+.change-frame {
+    min-height: 120px;
+}
+}
+@media only screen and (min-width: 721px) and (max-width: 821px)  {
+   .PawImg img {
+    max-width: 130px;
+}
+}
+.Drop-imgs img {
+    padding: 1px 0px;
+}
+.thepetpaintery-img canvas {
+    width: 100%;
+    max-width: 100% !important;
+    margin-top: 17px;
+    height: 100%;
+    object-fit: cover;
+    /* max-height: 380px; */
+}
+input.addtocartbutton {
+    background-color: transparent;
+    border: 0;
+    font-size: 20px;
+    padding: 0;
+    color: white;
+}
+
+@media screen and (max-width: 380px){
+.Select-Frames ul {
+    grid-template-columns: repeat(2,1fr);
+}
+}
